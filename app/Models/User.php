@@ -32,7 +32,7 @@ class User extends Authenticatable
         ];
     }
 
-    protected static function createTable()
+    protected static function createTables()
     {
         if (!Schema::hasTable(env('USERS_TABLE_NAME'))) 
         {
@@ -47,5 +47,22 @@ class User extends Authenticatable
                 $table->timestamps();
             });
         }
+        if(!Schema::hasTable(env('PASSWORD_RESETS_TABLE_NAME')))
+        {
+            Schema::create(env('PASSWORD_RESETS_TABLE_NAME'), function ($table) {
+                $table->string('email')->index();
+                $table->string('token');
+                $table->timestamp('created_at')->nullable();
+            });
+        }
+    }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->id,
+            'name' => $this->name,
+            'email' => $this->email
+        ];
     }
 }

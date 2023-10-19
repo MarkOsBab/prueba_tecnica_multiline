@@ -44,4 +44,26 @@ class Call extends Model
             });
         }
     }
+
+    public function users()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function clients()
+    {
+        return $this->hasOne(Client::class, 'cliente_id');
+    }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->llamada_id,
+            'client' => $this->clients,
+            'user' => $this->users,
+            'llamada_fecha' => $this->llamada_fecha,
+            'llamada_telefono' => $this->llamada_telefono,
+            'llamada_observacion' => $this->llamada_observacion,
+        ];
+    }
 }

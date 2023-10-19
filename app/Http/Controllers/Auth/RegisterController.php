@@ -38,7 +38,6 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        User::createTable();
         $this->middleware('guest');
     }
 

@@ -37,4 +37,13 @@ class Client extends Model
             $seed->run();
         }
     }
+
+    public function toArray()
+    {
+        return [
+            'cliente_id' => $this->cliente_id,
+            'cliente_nombre' => $this->cliente_nombre,
+            'cliente_correo' => $this->cliente_correo,
+        ];
+    }
 }

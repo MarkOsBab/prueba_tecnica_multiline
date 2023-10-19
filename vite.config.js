@@ -10,6 +10,7 @@ export default defineConfig({
                 'resources/js/app.js',
             ],
             refresh: true,
+            esModule: true,
         }),
         vue({
             template: {
